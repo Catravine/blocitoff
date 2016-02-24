@@ -28,3 +28,5 @@ gem 'jquery-rails'
 gem 'turbolinks'
 # Bootstrap CSS framework
 gem 'bootstrap-sass'
+# Devise user authentication system
+gem 'devise'
