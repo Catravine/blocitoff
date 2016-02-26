@@ -2,13 +2,21 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # my production host
-  config.action_mailer.default_url_options = { host: 'http://vast-sands-93293.herokuapp.com/' }
-  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { :host => 'http://vast-sands-93293.herokuapp.com/', :protocol => 'http' }
+    #config.action_mailer.delivery_method = :smtp
+  #config.action_mailer.raise_delivery_errors = true
+  #config.action_mailer.perform_deliveries = true
   config.action_mailer.smtp_settings = {
     :address => "127.0.0.1",
     :port    => 25,
     :domain  => 'http://vast-sands-93293.herokuapp.com/'
-  }
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true,
+    :user_name => 'ccblocitoff@gmail.com',
+    :password => 'helloworld16'
+ }
 
   # Code is not reloaded between requests.
   config.cache_classes = true
