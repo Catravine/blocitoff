@@ -3,6 +3,11 @@ Rails.application.configure do
 
   # my production host
   config.action_mailer.default_url_options = { host: 'http://vast-sands-93293.herokuapp.com/' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address => "127.0.0.1",
+    :port    => 25,
+    :domain  => 'http://vast-sands-93293.herokuapp.com/'
 
   # Code is not reloaded between requests.
   config.cache_classes = true
