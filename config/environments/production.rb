@@ -8,6 +8,7 @@ Rails.application.configure do
     :address => "127.0.0.1",
     :port    => 25,
     :domain  => 'http://vast-sands-93293.herokuapp.com/'
+  }
 
   # Code is not reloaded between requests.
   config.cache_classes = true
