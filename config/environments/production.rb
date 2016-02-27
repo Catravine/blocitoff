@@ -7,12 +7,12 @@ Rails.application.configure do
   #config.action_mailer.raise_delivery_errors = true
   #config.action_mailer.perform_deliveries = true
   config.action_mailer.smtp_settings = {
-    :address => "smtp.gmail.com",
-    :port => 587,
-    :authentication => :plain,
-    :enable_starttls_auto => true,
-    :user_name => 'ccblocitoff@gmail.com',
-    :password => 'helloworld16'
+   :address => "smtp.gmail.com",
+   :port => 587,
+   :authentication => :plain,
+   :enable_starttls_auto => true,
+   :user_name => 'ccblocitoff@gmail.com',
+   :password => 'helloworld16'
  }
 
   # Code is not reloaded between requests.
