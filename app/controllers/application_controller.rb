@@ -9,11 +9,19 @@ class ApplicationController < ActionController::Base
   # Add in a 'Username' parameter to Devise
   #before_action :configure_permitted_parameters, if: :devise_controller?
 
+  # How to handle various errors
+  rescue_from ActiveRecord::RecordNotFound, with: :handle_error
+
+
+
   protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
   end
 
+  def handle_error
+    redirect_to root_url
+  end
 
 end

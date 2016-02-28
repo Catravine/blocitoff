@@ -30,3 +30,5 @@ gem 'turbolinks'
 gem 'bootstrap-sass'
 # Devise user authentication system
 gem 'devise'
+# Factory Girl for building models
+gem 'factory_girl_rails'
