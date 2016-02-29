@@ -11,7 +11,7 @@
     </div>
     <div class="col-md-4">
       <% if user_signed_in? %>
-        <p>Hi, Username!<br/>
+        <p><%= link_to current_user.email, "/users/#{current_user.id}" %><br/>
         <small>(basic actions)</small></p>
       <% else %>
         <%= render "signup" %>

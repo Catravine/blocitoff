@@ -1,2 +1,19 @@
-<h1>User Profile</h1>
-<p>Here is a user profile for <%= @user.email %>. Have tons of fun with it.</p>
+<% @username = @user.email.slice(0...(@user.email.index('@'))).capitalize %>
+<h1>Profile: <span class="highlight"><%= @username %></h1>
+<div class="row">
+  <div class="col-md-8">
+    <p>Here is a user profile for <%= @user.email %>. Have tons of fun with it.</p>
+    <ul>
+      <li><strong>Email:</strong> <%= @user.email %></li>
+      <li><strong>Blocing it off since:</strong> <%= time_ago_in_words(@user.created_at) %> ago.</li>
+      <li><strong>Password:</strong> ...yes.
+    </ul>
+    <p><%= link_to "Edit profile", edit_user_registration_path, class: 'btn btn-primary' %></p>
+  </div>
+  <div class="col-md-4 lists">
+    <h3><%= @username %>'s To-Dos:</h3>
+    <ul>
+      <li>The only to-do list so far.</li>
+    </ul>
+  </div>
+</div>
