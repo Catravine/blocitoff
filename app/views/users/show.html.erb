@@ -13,9 +13,7 @@
   <div class="col-md-4">
     <div class="lists">
       <h3><%= @username %>'s To-Dos:</h3>
-      <ul>
-        <%= render partial: 'items/item', locals: { user: @user } %>
-      </ul>
+      <%= render partial: 'items/item', locals: { user: @user } %>
     </div>
     <%= render 'items/form', item: Item.new, user: @user %>
   </div>

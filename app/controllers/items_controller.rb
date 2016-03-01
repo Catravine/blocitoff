@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+
   def create
     @user = User.find(params[:user_id])
     @item = @user.items.build(item_params)
@@ -8,7 +9,22 @@ class ItemsController < ApplicationController
     else
       flash.now[:alert] = "There was an error saving the item.  Please try again."
     end
-    redirect_to [@user]
+    redirect_to @user
+  end
+
+  def destroy
+    @user = User.find(params[:user_id])
+    @item = @user.items.find(params[:id])
+    if @item.destroy
+      flash[:notice] = "\"#{@item.name}\" -is- DONE!"
+    else
+      flash.now[:alert] = "There was an error marking off this item."
+    end
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   private

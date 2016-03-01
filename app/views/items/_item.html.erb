@@ -1,3 +1,10 @@
-<% @user.items.each do |item| %>
-  <li><%= item.name %></li>
+<% if @user.items.count == 0 %>
+  <p>ALL DONE! :)</p>
+<% else %>
+  <ul>
+    <% @user.items.each do |item| %>
+      <li id='item-<%= item.id %>'><%= link_to "", [item.user, item], method: :delete, remote: true, class: 'glyphicon glyphicon-ok' %>
+      <%= item.name %></li>
+    <% end %>
+  </ul>
 <% end %>

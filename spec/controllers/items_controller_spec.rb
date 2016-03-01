@@ -5,10 +5,18 @@ RSpec.describe ItemsController, type: :controller do
   let(:my_item) { create(:item, user: my_user) }
 
   context "guest user" do
+
     describe "GET #create" do
       it "should redirect to login/index" do
         post :create, user_id: my_user.id, item: { name: "test to-do not logged in" }
         expect(response).to redirect_to root_path
+      end
+    end
+
+    describe "DELETE #destroy" do
+      it "should redirect to login/index" do
+        delete :destroy, format: :js, user_id: my_user.id, id: my_item.id
+        expect(response).to redirect_to(root_path)
       end
     end
   end
@@ -32,6 +40,19 @@ RSpec.describe ItemsController, type: :controller do
       it "redirects to user's profile" do
         post :create, user_id: my_user.id, item: { name: "test to-do redirect" }
         expect(response).to redirect_to my_user
+      end
+    end
+
+    describe "DELETE #destroy" do
+      it "deletes the item" do
+        delete :destroy, format: :js, user_id: my_user.id, id: my_item.id
+        count = Item.where({id: my_item.id}).size
+        expect(count).to eq 0
+      end
+
+      it "returns http success" do
+        delete :destroy, format: :js, user_id: my_user.id, id: my_item.id
+        expect(response).to have_http_status(:success)
       end
     end
   end

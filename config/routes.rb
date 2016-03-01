@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   get 'items/create'
 
   devise_for :users, :controllers => { :sessions => 'sessions' }
-  
+
   resources :users, only: [:show] do
-    resources :items, only: [:create]
+    resources :items, only: [:create, :destroy]
   end
 
   get 'welcome/index'

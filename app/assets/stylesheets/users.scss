@@ -9,4 +9,22 @@
   background: #eee;
   border-radius: 10px;
   padding: 5px 15px 10px 15px;
+  border: 1px solid #ddd;
+}
+
+.lists ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.lists li {
+  padding: 5px;
+  border-top: 1px solid #ddd;
+}
+
+.lists .glyphicon {
+  background: white;
+  border: 1px solid #ddd;
+  padding: 2px;
+  border-radius: 5px;
 }
