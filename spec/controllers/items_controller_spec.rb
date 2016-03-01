@@ -4,6 +4,15 @@ RSpec.describe ItemsController, type: :controller do
   let(:my_user) { create(:user) }
   let(:my_item) { create(:item, user: my_user) }
 
+  context "guest user" do
+    describe "GET #create" do
+      it "should redirect to login/index" do
+        post :create, user_id: my_user.id, item: { name: "test to-do not logged in" }
+        expect(response).to redirect_to root_path
+      end
+    end
+  end
+
   context "signed in user" do
     before(:each) do
       @request.env["devise.mapping"] = Devise.mappings[:user]
