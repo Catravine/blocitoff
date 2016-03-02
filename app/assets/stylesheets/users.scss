@@ -22,15 +22,17 @@
   border-top: 1px solid #ddd;
 }
 
-.lists .glyphicon {
+.lists .glyphicon-ok {
   background: white;
   border: 1px solid #ddd;
   padding: 2px;
   border-radius: 5px;
 }
 
-.time-left {
+.time-left, .last-day {
   font-size: 70%;
-  color: #036;
   padding: 10px;
 }
+
+.time-left { color: #036; }
+.last-day { color: #610; }

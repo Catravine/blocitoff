@@ -4,8 +4,15 @@
   <ul>
     <% @user.items.each do |item| %>
       <li id='item-<%= item.id %>'><%= link_to "", [item.user, item], method: :delete, remote: true, class: 'glyphicon glyphicon-ok' %>
-      <%= item.name %>
-      <span class="time-left"><%= distance_of_time_in_words(Time.now.to_date, item.finish_or_delete_by) %> left</span>
+      <%= item.name %><br/>
+        <% if item.finish_or_delete_by == Time.now.to_date %>
+          <span class="last-day">
+            <span class="glyphicon glyphicon-star"></span> LAST DAY</span>
+        <% else %>
+          <span class="time-left">
+            <%= distance_of_time_in_words(Time.now.to_date, item.finish_or_delete_by) %>
+              left</span>
+        <% end %>
       </li>
     <% end %>
   </ul>
