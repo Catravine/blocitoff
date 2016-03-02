@@ -24,12 +24,12 @@ class ApplicationController < ActionController::Base
     redirect_to root_url
   end
 
-  def authenticate_user!
-    if user_signed_in?
-      super
-    else
-      redirect_to root_path, :notice => 'Must be logged in to do that.'
-    end
-  end
+  #def authenticate_user!
+    #if user_signed_in?
+      #super
+    #else
+      #redirect_to root_path, :notice => 'Must be logged in to do that.'
+    #end
+  #end
 
 end
