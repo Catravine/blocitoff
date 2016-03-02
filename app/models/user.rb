@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_many :items
 
   def name
-    self.email.split(/@/).first.capitalize
+    username = self.email.split(/@/).first.humanize
   end
 
 end
