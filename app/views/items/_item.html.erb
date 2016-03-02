@@ -6,7 +6,7 @@
       <li id='item-<%= item.id %>'><%= link_to "", [item.user, item], method: :delete, remote: true, class: 'glyphicon glyphicon-ok' %>
       <%= item.name %>
       <span class="time-left"><%= distance_of_time_in_words(Time.now.to_date, item.finish_or_delete_by) %> left</span>
-      </li>
+      <br/><%= item.finish_or_delete_by %></li>
     <% end %>
   </ul>
 <% end %>

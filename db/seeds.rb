@@ -35,7 +35,12 @@ items = Item.all
 
 # Switch around created_at dates
 items.each do |item|
+  # NO tasks will be immidieately deleted on rake todo:delete_items
   item.update_attribute(:created_at, rand(7.days.ago..Time.now))
+  # SOME tasks will be immidieately deleted on rake todo:delete_items
+  #item.update_attribute(:created_at, rand(14.days.ago..Time.now))
+  # ALL tasks will be immidieately deleted on rake todo:delete_items
+  #item.update_attribute(:created_at, rand(14.days.ago..7.days.ago))
 end
 
 # Results
