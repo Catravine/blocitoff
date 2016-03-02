@@ -11,4 +11,10 @@ RSpec.describe Item, type: :model do
       expect(my_item).to respond_to(:name)
     end
   end
+
+  describe "item#finish_or_delete_by" do
+    it "creates a due date based on created_at date" do
+      expect(my_item.finish_or_delete_by).to eq(7.days.from_now.to_date)
+    end
+  end
 end

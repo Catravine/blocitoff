@@ -6,5 +6,9 @@ class User < ActiveRecord::Base
          :confirmable
 
   has_many :items
-  
+
+  def name
+    self.email.split(/@/).first.capitalize
+  end
+
 end

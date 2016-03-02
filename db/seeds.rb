@@ -31,6 +31,12 @@ users = User.all
 50.times do
   Item.create(name: Faker::Hacker.say_something_smart, user: users.sample)
 end
+items = Item.all
+
+# Switch around created_at dates
+items.each do |item|
+  item.update_attribute(:created_at, rand(7.days.ago..Time.now))
+end
 
 # Results
 puts "Seed Finished..."
