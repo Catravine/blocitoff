@@ -7,16 +7,16 @@ RSpec.describe ItemsController, type: :controller do
   context "guest user" do
 
     describe "GET #create" do
-      it "should redirect to login/index" do
+      it "should redirect to login" do
         post :create, user_id: my_user.id, item: { name: "test to-do not logged in" }
-        expect(response).to redirect_to root_path
+        expect(response).to redirect_to new_user_session_path
       end
     end
 
     describe "DELETE #destroy" do
-      it "should redirect to login/index" do
+      it "should redirect to login" do
         delete :destroy, format: :js, user_id: my_user.id, id: my_item.id
-        expect(response).to redirect_to(root_path)
+        expect(response).to have_http_status(401)
       end
     end
   end
