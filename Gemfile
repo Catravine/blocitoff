@@ -36,4 +36,4 @@ gem 'factory_girl_rails'
 # Realistic fake data
 gem 'faker'
 # Automate Tasks
-gem 'whenever', :require => false
+gem 'whenever', require: false
