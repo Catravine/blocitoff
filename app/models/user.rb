@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable
 
-  has_many :items
+  has_many :lists
 
   def name
     username = self.email.split(/@/).first.humanize

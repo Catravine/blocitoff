@@ -1,0 +1,13 @@
+<%= form_for [user, list] do |f| %>
+  <table>
+    <tr>
+      <td>
+        <%= f.label :title, class: 'sr-only' %>
+        <%= f.text_field :title, class: 'form-control', placeholder: "Enter a new List Title" %>
+      </td>
+      <td>
+      <%= f.submit "New List", class: 'btn btn-success pull-right' %>
+      </td>
+    </tr>
+  </table>
+<% end %>

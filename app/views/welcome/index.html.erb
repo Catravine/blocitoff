@@ -12,10 +12,10 @@
     <div class="col-md-4">
       <% if user_signed_in? %>
         <h2><%= link_to current_user.name, "/users/#{current_user.id}" %>:</h2>
-        <% if current_user.items.count == 0 %>
+        <% if current_user.lists.count == 0 %>
           <p><em>fini</em>...super-dunzo <span style="color: #09f;" class="glyphicon glyphicon-ok"></span></p>
         <% else %>
-          <p><%=  pluralize current_user.items.count, "Things" %> To-Do</p>
+          <p><%=  pluralize current_user.lists.count, "Lists" %>, with X To-Do</p>
         <% end %>
       <% else %>
         <%= render "signup" %>

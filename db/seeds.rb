@@ -27,23 +27,25 @@ User.create!(
 # Total Users
 users = User.all
 
+# Create To-Do lists
+24.times do
+  List.create(title: Faker::Company.buzzword, user: users.sample)
+end
+lists = List.all
+
 # Create To-Do items
-50.times do
-  Item.create(name: Faker::Hacker.say_something_smart, user: users.sample)
+100.times do
+  Item.create(name: Faker::Hacker.say_something_smart, list: lists.sample)
 end
 items = Item.all
 
-# Switch around created_at dates
+# Switch around item/created_at dates randomly within the past week
 items.each do |item|
-  # NO tasks will be immidieately deleted on rake todo:delete_items
   item.update_attribute(:created_at, rand(7.days.ago..Time.now))
-  # SOME tasks will be immidieately deleted on rake todo:delete_items
-  #item.update_attribute(:created_at, rand(14.days.ago..Time.now))
-  # ALL tasks will be immidieately deleted on rake todo:delete_items
-  #item.update_attribute(:created_at, rand(14.days.ago..7.days.ago))
 end
 
 # Results
 puts "Seed Finished..."
 puts "#{User.count} users created"
+puts "#{List.count} lists created"
 puts "#{Item.count} items created"

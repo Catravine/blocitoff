@@ -10,10 +10,10 @@
     <p><%= link_to "Edit profile", edit_user_registration_path, class: 'btn btn-primary' %></p>
   </div>
   <div class="col-md-4">
-    <div class="lists">
-      <h3><%= @user.name %>'s To-Dos:</h3>
-      <%= render partial: 'items/item', locals: { user: @user } %>
+    <div class="list-of-lists">
+      <h3><%= @user.name %>'s Lists:</h3>
+      <%= render partial: 'lists/lists', locals: { user: @user } %>
     </div>
-    <%= render 'items/form', item: Item.new, user: @user %>
+    <%= render 'lists/form', list: List.new, user: @user %>
   </div>
 </div>

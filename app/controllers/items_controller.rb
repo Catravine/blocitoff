@@ -2,7 +2,8 @@ class ItemsController < ApplicationController
 
   def create
     @user = User.find(params[:user_id])
-    @item = @user.items.build(item_params)
+    @list = @user.lists.find(params[:list_id])
+    @item = @list.items.build(item_params)
 
     if @item.save
       flash[:notice] = "Item was saved."
@@ -14,16 +15,12 @@ class ItemsController < ApplicationController
 
   def destroy
     @user = User.find(params[:user_id])
-    @item = @user.items.find(params[:id])
+    @list = @user.lists.find(params[:list_id])
+    @item = @list.items.find(params[:id])
     if @item.destroy
       flash[:notice] = "\"#{@item.name}\" -is- DONE!"
     else
       flash.now[:alert] = "There was an error marking off this item."
-    end
-
-    respond_to do |format|
-      format.html
-      format.js
     end
   end
 
