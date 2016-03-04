@@ -13,8 +13,7 @@ class ListsController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:user_id])
-    @list = @user.lists.find(params[:id])
+    @list = List.find(params[:id])
     if @list.destroy
       flash[:notice] = "\"#{@list.title}\" -is- DONE!"
     else

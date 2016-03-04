@@ -15,7 +15,7 @@ RSpec.describe ListsController, type: :controller do
 
     describe "DELETE #destroy" do
       it "should redirect to login" do
-        delete :destroy, user_id: my_user.id, id: my_list.id
+        delete :destroy, id: my_list.id
         expect(response).to redirect_to new_user_session_path
       end
     end
@@ -45,13 +45,13 @@ RSpec.describe ListsController, type: :controller do
 
     describe "DELETE #destroy" do
       it "deletes the list" do
-        delete :destroy, user_id: my_user.id, id: my_list.id
+        delete :destroy, id: my_list.id
         count = List.where({id: my_list.id}).size
         expect(count).to eq 0
       end
 
       it "returns http success" do
-        delete :destroy, user_id: my_user.id, id: my_list.id
+        delete :destroy, id: my_list.id
         expect(response).to have_http_status(:success)
       end
     end

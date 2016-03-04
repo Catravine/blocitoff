@@ -9,14 +9,14 @@ RSpec.describe ItemsController, type: :controller do
 
     describe "GET #create" do
       it "should redirect to login" do
-        post :create, user_id: my_user.id, item: { name: "test to-do not logged in" }
+        post :create, list_id: my_list.id, item: { name: "test to-do not logged in" }
         expect(response).to redirect_to new_user_session_path
       end
     end
 
     describe "DELETE #destroy" do
       it "should redirect to login" do
-        delete :destroy, format: :js, user_id: my_user.id, list_id: my_list.id, id: my_item.id
+        delete :destroy, format: :js, id: my_item.id
         expect(response).to have_http_status(401)
       end
     end
@@ -30,29 +30,29 @@ RSpec.describe ItemsController, type: :controller do
 
     describe "GET #create" do
       it "increases the number of Items by 1" do
-        expect{ post :create, user_id: my_user.id, list_id: my_list.id, item: { name: "test to-do count" }}.to change(Item,:count).by(1)
+        expect{ post :create, list_id: my_list.id, item: { name: "test to-do count" }}.to change(Item,:count).by(1)
       end
 
       it "assigns the new item to @item" do
-        post :create, user_id: my_user.id, list_id: my_list.id, item: { name: "test to-do" }
+        post :create, list_id: my_list.id, item: { name: "test to-do" }
         expect(assigns(:item)).to eq Item.last
       end
 
       it "redirects to user's profile" do
-        post :create, user_id: my_user.id, list_id: my_list.id, item: { name: "test to-do redirect" }
+        post :create, list_id: my_list.id, item: { name: "test to-do redirect" }
         expect(response).to redirect_to my_user
       end
     end
 
     describe "DELETE #destroy" do
       it "deletes the item" do
-        delete :destroy, format: :js, user_id: my_user.id, list_id: my_list.id, id: my_item.id
+        delete :destroy, format: :js, id: my_item.id
         count = Item.where({id: my_item.id}).size
         expect(count).to eq 0
       end
 
       it "returns http success" do
-        delete :destroy, user_id: my_user.id, list_id: my_list.id, id: my_item.id
+        delete :destroy, id: my_item.id
         expect(response).to have_http_status(:success)
       end
     end
