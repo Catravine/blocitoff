@@ -12,4 +12,15 @@ RSpec.describe List, type: :model do
       expect(my_list).to respond_to(:title)
     end
   end
+
+  describe "#number_of_items" do
+    before do
+      item1 = create(:item, list: my_list)
+      item2 = create(:item, list: my_list)
+      item3 = create(:item, list: my_list)
+    end
+    it "returns the number of items in the list" do
+      expect(my_list.number_of_items).to eq(3)
+    end
+  end
 end

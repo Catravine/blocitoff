@@ -1,9 +1,10 @@
-<% if @user.items.count == 0 %>
+<h3><%= @list.title %></h3>
+<% if @list.items.count == 0 %>
   <p>ALL DONE! :)</p>
 <% else %>
   <ul>
-    <% @user.items.each do |item| %>
-      <li id='item-<%= item.id %>'><%= link_to "", [item.user, item], method: :delete, remote: true, class: 'glyphicon glyphicon-ok' %>
+    <% @list.items.each do |item| %>
+      <li id='item-<%= item.id %>'><%= link_to "", [item.list, item], method: :delete, remote: true, class: 'glyphicon glyphicon-ok' %>
       <%= item.name %><br/>
         <% if item.finish_or_delete_by == Time.now.to_date %>
           <span class="last-day">
