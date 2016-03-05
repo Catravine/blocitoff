@@ -14,6 +14,7 @@ class ListsController < ApplicationController
 
   def destroy
     @list = List.find(params[:id])
+
     if @list.destroy
       flash[:notice] = "\"#{@list.title}\" -is- DONE!"
     else

@@ -17,3 +17,14 @@
     <%= render 'lists/form', list: List.new, user: @user %>
   </div>
 </div>
+<div class="row todo-lists">
+  <% @user.lists.each do |list| %>
+    <div class="col-md-4">
+      <div class="lists">
+        <h3 id='list-<%= list.id %>'><%= list.title.capitalize %></h3>
+        <%= render partial: 'items/item', locals: { user: @user, list: list } %>
+      </div>
+    </div>
+  <% end %>
+  <div class="clearfix">&nbsp;</div>
+</div>

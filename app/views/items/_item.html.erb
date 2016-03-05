@@ -1,11 +1,11 @@
-<h3><%= @list.title %></h3>
-<% if @list.items.count == 0 %>
-  <p>ALL DONE! :)</p>
+<% if list.items.count == 0 %>
+  <p class="empty-list">empty list!</p>
 <% else %>
   <ul>
-    <% @list.items.each do |item| %>
-      <li id='item-<%= item.id %>'><%= link_to "", [item.list, item], method: :delete, remote: true, class: 'glyphicon glyphicon-ok' %>
-      <%= item.name %><br/>
+    <% list.items.each do |item| %>
+      <li id='item-<%= item.id %>'>
+        <%= link_to "", [item], method: :delete, remote: true, class: 'glyphicon glyphicon-ok' %>
+        <%= item.name %><br/>
         <% if item.finish_or_delete_by == Time.now.to_date %>
           <span class="last-day">
             <span class="glyphicon glyphicon-star"></span> LAST DAY</span>
@@ -18,3 +18,4 @@
     <% end %>
   </ul>
 <% end %>
+<%= render 'items/form', item: Item.new, list: list %>

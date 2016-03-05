@@ -11,6 +11,11 @@ RSpec.describe List, type: :model do
     it "should respond to title" do
       expect(my_list).to respond_to(:title)
     end
+
+    it "should titleize titles" do
+      my_other_list = create(:list, user: my_user, title: "list test")
+      expect(my_other_list.title).to eq("List Test")
+    end
   end
 
   describe "#number_of_items" do

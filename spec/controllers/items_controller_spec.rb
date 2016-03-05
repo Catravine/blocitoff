@@ -24,6 +24,7 @@ RSpec.describe ItemsController, type: :controller do
 
   context "signed in user" do
     before(:each) do
+      request.env["HTTP_REFERER"] = "where_i_came_from"
       @request.env["devise.mapping"] = Devise.mappings[:user]
       sign_in my_user
     end
@@ -40,7 +41,7 @@ RSpec.describe ItemsController, type: :controller do
 
       it "redirects to user's profile" do
         post :create, list_id: my_list.id, item: { name: "test to-do redirect" }
-        expect(response).to redirect_to my_user
+        expect(response).to redirect_to "where_i_came_from"
       end
     end
 

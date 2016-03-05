@@ -8,7 +8,15 @@ class User < ActiveRecord::Base
   has_many :lists
 
   def name
-    username = self.email.split(/@/).first.humanize
+    username = self.email.split(/@/).first.humanize.titleize
+  end
+
+  def total_items
+    num = 0
+    self.lists.each do |list|
+      num += list.number_of_items
+    end
+    return num
   end
 
 end

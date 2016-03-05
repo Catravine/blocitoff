@@ -3,8 +3,8 @@
 <% else %>
   <p>
     <% @user.lists.each_with_index do |list, index| %>
-      <span class="list-titles" id='list-<%= list.id %>'>
-        <%= link_to list.title, '#' %></span><% unless index == @user.lists.count - 1 %>, <% end %>
+      <span class="list-titles">
+        <%= link_to list.title, "#list-#{list.id}" %></span><% unless index == @user.lists.count - 1 %>, <% end %>
     <% end %>
   </p>
 <% end %>
