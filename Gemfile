@@ -37,3 +37,5 @@ gem 'factory_girl_rails'
 gem 'faker'
 # Automate Tasks
 gem 'whenever', require: false
+# Active Model Serializer
+gem 'active_model_serializers'
