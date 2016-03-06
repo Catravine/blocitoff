@@ -10,11 +10,7 @@ class List < ActiveRecord::Base
   end
 
   def number_of_items
-    num = 0
-    Item.all.each do |item|
-      num +=1 if item.list_id == self.id
-    end
-    return num
+    Item.all.select{|item| item.list_id == self.id}.count
   end
 
 end
