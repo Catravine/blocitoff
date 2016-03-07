@@ -1,16 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'items/create'
-
-  get 'items/create'
-
   devise_for :users, :controllers => { :sessions => 'sessions' }
-
-  #resources :users, only: [:show] do
-    #resources :lists, only: [:create, :destroy] do
-      #resources :items, only: [:create, :destroy]
-    #end
-  #end
 
   resources :users, only: [:show] do
     resources :lists, only: [:create]
@@ -21,6 +11,10 @@ Rails.application.routes.draw do
   end
 
   resources :items, only: [:destroy]
+
+  namespace :api, defaults: { format: :json } do
+    resources :users
+  end
 
   get 'welcome/index'
 
