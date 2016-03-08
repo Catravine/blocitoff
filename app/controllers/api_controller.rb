@@ -9,7 +9,8 @@ class ApiController < ApplicationController
   private
 
   def authenticated?
-    sign_in User.where(email: "catravine@hotmail.com")
+    true
+    #sign_in User.where(email: "catravine@hotmail.com")
     #authenticate_or_request_with_http_basic do |username, password|
       #resource = User.find_by_email(username)
       #if resource.valid_password?(password)
