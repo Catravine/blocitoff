@@ -17,6 +17,7 @@ RSpec.describe UsersController, type: :controller do
       @request.env["devise.mapping"] = Devise.mappings[:user]
       sign_in my_user
     end
+    
     describe "GET show" do
       it "returns http success" do
         get :show, {id: my_user.id}

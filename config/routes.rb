@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :items, only: [:destroy]
 
   namespace :api, defaults: { format: :json } do
-    resources :users
+    resources :users, only: [:index, :show]
   end
 
   get 'welcome/index'
