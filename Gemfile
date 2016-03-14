@@ -15,6 +15,7 @@ end
 group :development, :test do
   gem 'rspec-rails', '~>3.0'
   gem 'shoulda-matchers'
+  gem 'database_cleaner'
 end
 
 # Use SCSS for stylesheets
