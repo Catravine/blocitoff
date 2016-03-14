@@ -23,4 +23,11 @@ RSpec.describe User, type: :model do
       expect(my_user.total_items).to eq(5)
     end
   end
+
+  describe "user#generate_auth_token" do
+    it "creates a token" do
+      expect(my_user.auth_token).to_not be_nil
+    end
+  end
+
 end
