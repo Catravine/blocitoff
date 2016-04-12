@@ -1,10 +1,11 @@
+<script type='text/javascript'>
+  blocmetrics.report('Main Index');
+</script>
 <br>
 <div class="jumbotron">
   <div class="row">
     <div class="col-md-8">
-      <h1 onload="function() {
-  blocmetrics.report('Index View');
-};">Blocitoff <span style="color: #09f;" class="glyphicon glyphicon-ok" aria-hidden="true"></span></h1>
+      <h1>Blocitoff <span style="color: #09f;" class="glyphicon glyphicon-ok" aria-hidden="true"></span></h1>
       <p>finish'em off, or ignore'em until they go away!</p>
       <% if !(user_signed_in?) %>
         <p><%= link_to "Sign In", new_user_session_path, class: 'btn btn-primary' %>
